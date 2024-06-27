@@ -5,15 +5,16 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /*@author kevin*/
 
 public class Conexion {
-    Connection conexion = null;
-    Statement comando = null;
-    ResultSet registro;
+    public Connection conexion = null;
+    public Statement comando = null;
+    public ResultSet registro;
     
-    public Connection JavaToMySQL() {
+    public Connection JavaToMySQL() throws Exception{
         try {
             // Instanciar librería del conector
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -26,12 +27,16 @@ public class Conexion {
             // Establecer conexión
             conexion = DriverManager.getConnection(servidor, usuario, password);
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,"No se puedo encontrar la clase Coneixon");
         } catch (SQLException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,"No se puedo conectar a la base de datos");
+        }catch(Exception es){
+           JOptionPane.showMessageDialog(null,"Error con la informacion gestionada"); 
+        }finally{
+            JOptionPane.showMessageDialog(null,"Conexion exitosa"); 
+            return conexion; 
         }
         
-        return conexion;
     }
 }
 
