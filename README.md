@@ -1,0 +1,3 @@
+# HOW TO CREATE A DATA BASE CONNECTION WITH JAVA
+
+First at all, we need
