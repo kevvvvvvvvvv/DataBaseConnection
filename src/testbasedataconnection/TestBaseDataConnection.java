@@ -18,7 +18,8 @@ public class TestBaseDataConnection {
             String tabla = "persona";
             String query = "select * from "+tabla;
             
-            // Converts the string instruction into a command that MySQL can understand
+            // Sets up comando variable because it can't stay being null.
+            // createStatement() creats an Statement object.
             conector.comando = conector.conexion.createStatement();
             
             // Executes the command and saves the result into "registro"
