@@ -8,7 +8,7 @@
   - [DRIVER CONFIGURATION. `Conexion` CLASS](#driver-configuration-conexion-class)
     - [JavaToSQL Method](#javatosql-method)
       - [`Class.forName`](#classforname)
-      - [`Conection info`](#conection-info)
+      - [`Connection info`](#connection-info)
       - [`DriverManager.getConnection`](#drivermanagergetconnection)
     - [The Rest Of The Variables](#the-rest-of-the-variables)
   - [MAIN CLASS (`TestBaseDataConnection`)](#main-class-testbasedataconnection)
@@ -18,31 +18,31 @@
 
 ## DOWNLOAD AND UPLOAD DRIVER
 
-First at all, we need to download the Java driver that will let us to use MySQL commands with Java code.
+First of all, we need to download the Java driver that will let us to use MySQL commands with Java code.
 
-Teacher provides us two different driver versions (or you can look for it in internet). Whatever you choose is right, it just changes a code line from the driver configuration. Not a big deal.
+The teacher provides us with two different driver versions, 5.0.8 and 8.0.33 (or you can look for it on the internet). Whatever you choose is right, it just changes a code line from the driver configuration. Not a big deal.
 
-(image)
+![drivers](./images/Drivers-Classroom.png)
 
 Once you're done, it's time for uploading that driver into your Netbeans project. You can do that by:
 
 1. Left clicking in your project
 
-(image)
+![project](./images/Left-Click-Project.png)
 
-2. Then click in 'propierties'
+2. Then click on 'properties'
 
-(image)
+![propierties](./images/Properties.png)
 
 3. Select the 'Libraries' category
 
-(image)
+![libraries](./images/Libraries.png)
 
 4. And in the 'Classpath' option, select the .JAR file you just downloaded <sup>1</sup>
 
  **Note 1:** the .JAR file can be inside the folder you downloaded
 
-(image)
+![classpath](./images/Classpath.png)
 
 5. Driver is loaded!, now close window.
 
@@ -55,11 +55,11 @@ Once you're done, it's time for uploading that driver into your Netbeans project
 
 ## DRIVER CONFIGURATION. `Conexion` CLASS
 
-Now it's time to configurate the driver in order to get access to one of our Data Bases (DB). So we gonna need to specify information like port, DB name, user, password, etc.
+Now it's time to configure the driver in order to get access to one of our Data Bases (DB). So we gonna need to specify information like port, DB name, user, password, etc.
 
-That information will be storaged in our method `JavaToSQL` (from `Conexion` class).
+That information will be stored in our method `JavaToSQL` (from `Conexion` class).
 
-(image)
+![conexion class](./images/Conexion-Class.png)
 
 ### JavaToSQL Method
 
@@ -75,17 +75,19 @@ It loads the driver. What we are doing here is literally telling which class we'
 
 ```
 
+
+![5.0.8 Driver](./images/Driver-Direction-5.png)
+
 or
 
 ```java
     
-    Class.forName("com.mysql.cj.jdbc.Driver"); // 8.9 Driver version
+    Class.forName("com.mysql.cj.jdbc.Driver"); // 8.4 Driver version
 
 ```
+![8.4 Driver](./images/Driver-Direction-8.png)
 
-(image of the driver class)
-
-#### `Conection info`
+#### `Connection info`
 
 Here we only set the DB info in *Strings*.
 
@@ -136,7 +138,7 @@ And that's practically all from this method.
 
 ### The Rest Of The Variables
 
-In this class we have two more variables: `comando` and `registro`. Each one requires its own import line: `import java.sql.Statement` and `import java.sql.Statement`.
+In this class we have two more variables: `comando` and `registro`. Each one requires its own import statement: `import java.sql.Statement` and `import java.sql.ResulSet`.
 
 ```java
 
@@ -177,7 +179,7 @@ Then, we prepare our query with Strings
     String query = "select * from "+tabla;  
 ```
 
-Also we prepare the "*comando*" variable. How we saw before, it is `null`, but we can't work with nulls, so we create a Statement object by using `createStatement()`
+Also we prepare the "*comando*" variable. As we saw before, it is `null`, but we can't work with nulls, so we create a Statement object by using `createStatement()`
 
 ```java
     conector.comando = conector.conexion.createStatement();

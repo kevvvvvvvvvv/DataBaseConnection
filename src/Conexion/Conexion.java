@@ -30,7 +30,7 @@ public class Conexion {
         try {
             // Loads the MySQL driver downloaded
             Class.forName("com.mysql.jdbc.Driver"); // 5.0.8 Driver version
-            //Class.forName("com.mysql.cj.jdbc.Driver"); // 8.9 Driver version
+            //Class.forName("com.mysql.cj.jdbc.Driver"); // 8.4 Driver version
             
             // Connection info
             String servidor = "jdbc:mysql://localhost:3307/practica1";
